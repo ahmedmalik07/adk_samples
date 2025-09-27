@@ -4,6 +4,7 @@ import React, { useState, useEffect, createContext, useContext } from 'react'
 import { motion } from 'framer-motion'
 import { User, LogIn, LogOut, UserPlus, Mail, Eye, EyeOff } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { apiCall } from '@/lib/api'
 
 // Auth Context
 interface AuthContextType {
@@ -31,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const token = localStorage.getItem('supabase_token')
       if (token) {
-        const response = await fetch('http://localhost:8000/auth/user', {
+        const response = await apiCall('/auth/user', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -53,11 +54,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signUpWithEmail = async (email: string, password: string, fullName: string = '') => {
     try {
-      const response = await fetch('http://localhost:8000/auth/email/signup', {
+      const response = await apiCall('/auth/email/signup', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify({
           email,
           password,
@@ -83,11 +81,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signInWithEmail = async (email: string, password: string) => {
     try {
-      const response = await fetch('http://localhost:8000/auth/email/signin', {
+      const response = await apiCall('/auth/email/signin', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify({
           email,
           password
@@ -112,11 +107,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signInAnonymously = async () => {
     try {
-      const response = await fetch('http://localhost:8000/auth/anonymous', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+      const response = await apiCall('/auth/anonymous', {
+        method: 'POST'
       })
 
       const data = await response.json()
@@ -137,7 +129,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = async () => {
     try {
-      await fetch('http://localhost:8000/auth/signout', {
+      await apiCall('/auth/signout', {
         method: 'POST'
       })
     } catch (error) {

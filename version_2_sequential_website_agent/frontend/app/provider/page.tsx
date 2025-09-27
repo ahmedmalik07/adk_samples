@@ -7,6 +7,7 @@ import { ArrowLeft, Home, User, MapPin, DollarSign, Wifi, Car, Utensils, Plus, X
 import Link from 'next/link'
 import toast from 'react-hot-toast'
 import { useAuth, EmailAuthModal } from '../../components/EmailAuth'
+import { apiCall } from '@/lib/api'
 
 interface ProviderFormData {
   name: string
@@ -129,11 +130,8 @@ export default function ProviderPage() {
       }
 
       // Send to backend API
-      const response = await fetch('http://localhost:8000/list-property', {
+      const response = await apiCall('/list-property', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(listingData)
       })
       

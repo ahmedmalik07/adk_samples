@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { ArrowLeft, Search, User, MapPin, DollarSign, Clock, Sparkles, Home, Users, Star, Brain } from 'lucide-react'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
+import { apiCall } from '@/lib/api'
 
 interface SeekerFormData {
   name: string
@@ -57,11 +58,8 @@ export default function SeekerPage() {
       }
 
       // Call the agent system
-      const response = await fetch('http://localhost:8000/find-matches', {
+      const response = await apiCall('/find-matches', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(payload)
       })
 
