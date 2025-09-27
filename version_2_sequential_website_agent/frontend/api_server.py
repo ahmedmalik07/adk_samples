@@ -50,7 +50,13 @@ except Exception as e:
     supabase_db = None
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000", "http://localhost:3001"], supports_credentials=True)  # Enable CORS for all domains on all routes
+CORS(app, origins=[
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://lodgio-py2q2yyhw-ahmed-usmans-projects-2868f576.vercel.app",
+    "https://lodgio-qy8qmpm0a-ahmed-usmans-projects-2868f576.vercel.app",
+    "https://lodgio-4ax0bbtph-ahmed-usmans-projects-2868f576.vercel.app"
+], supports_credentials=True)  # Enable CORS for frontend domains
 
 
 # Test endpoint for auth

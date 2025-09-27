@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+.venv/
+venv/
+ENV/
+
+# Development files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Frontend (not needed for backend deployment)
+frontend/node_modules/
+frontend/.next/
+frontend/package-lock.json
+
+# Documentation and scripts
+*.md
+*.bat
+*.ps1
+*.sh
+setup_*
+start_*
+
+# Test files
+test_*.py
+*_test.py
+
+# Demo and development files
+demo.py
+offline_demo.py
+simple_test.py
+performance_benchmark.py
+rotating_hexagon_simulation.ipynb
+
+# Data files (will be loaded from environment/database)
+Room*.zip
+
+# Environment files (will be set via Cloud Run)
+.env
+.env.local
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
