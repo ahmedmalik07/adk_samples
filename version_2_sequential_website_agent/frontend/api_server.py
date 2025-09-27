@@ -55,7 +55,9 @@ CORS(app, origins=[
     "http://localhost:3001",
     "https://lodgio-py2q2yyhw-ahmed-usmans-projects-2868f576.vercel.app",
     "https://lodgio-qy8qmpm0a-ahmed-usmans-projects-2868f576.vercel.app",
-    "https://lodgio-4ax0bbtph-ahmed-usmans-projects-2868f576.vercel.app"
+    "https://lodgio-4ax0bbtph-ahmed-usmans-projects-2868f576.vercel.app",
+    "https://lodgio-esp61jcw0-ahmed-usmans-projects-2868f576.vercel.app",
+    "https://lodgio-24eegbo8w-ahmed-usmans-projects-2868f576.vercel.app"
 ], supports_credentials=True)  # Enable CORS for frontend domains
 
 

@@ -6,8 +6,9 @@ import { useForm } from 'react-hook-form'
 import { ArrowLeft, Home, User, MapPin, DollarSign, Wifi, Car, Utensils, Plus, X } from 'lucide-react'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
-import { useAuth, EmailAuthModal } from '../../components/EmailAuth'
+import { useAuth } from '../../contexts/AuthContext'
 import { apiCall } from '@/lib/api'
+import { EmailAuthModal } from '../../components/EmailAuth'
 
 interface ProviderFormData {
   name: string

@@ -4,11 +4,12 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Users, Home, Search, Star, CheckCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { useAuth, UserProfile, EmailAuthModal } from '../components/EmailAuth'
+import { useAuth } from '../contexts/AuthContext'
+import NewAuth from '../components/NewAuth'
 
 export default function HomePage() {
   const [userType, setUserType] = useState<'seeker' | 'provider' | null>(null)
-  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [showAuth, setShowAuth] = useState(false)
   const { user, loading } = useAuth()
 
   return (
@@ -42,10 +43,18 @@ export default function HomePage() {
               {/* Authentication UI */}
               {!loading && (
                 user ? (
-                  <UserProfile />
+                  <div className="flex items-center space-x-3">
+                    <span className="text-gray-700">Welcome, {user.name}!</span>
+                    <button
+                      onClick={() => {/* Handle sign out */}}
+                      className="text-red-600 hover:text-red-800 font-medium"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
                 ) : (
                   <button
-                    onClick={() => setShowAuthModal(true)}
+                    onClick={() => setShowAuth(true)}
                     className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium"
                   >
                     Sign In
@@ -354,11 +363,14 @@ export default function HomePage() {
         </div>
       </footer>
       
-      {/* Authentication Modal */}
-      <EmailAuthModal 
-        isOpen={showAuthModal} 
-        onCloseAction={() => setShowAuthModal(false)} 
-      />
+      {/* Authentication Section */}
+      {showAuth && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setShowAuth(false)}>
+          <div onClick={(e) => e.stopPropagation()}>
+            <NewAuth />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
