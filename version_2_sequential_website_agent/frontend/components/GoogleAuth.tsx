@@ -238,7 +238,7 @@ export function AuthModal({ isOpen, onClose, mode = 'signin' }: {
       >
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            {currentMode === 'signin' ? 'Welcome Back' : 'Join RoomMate Matcher'}
+            {currentMode === 'signin' ? 'Welcome Back' : 'Join Lodgio'}
           </h2>
           <p className="text-gray-600">
             {currentMode === 'signin' 

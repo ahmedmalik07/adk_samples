@@ -89,7 +89,7 @@ export default function Dashboard() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
               <Users className="h-8 w-8 text-primary-600" />
-              <h1 className="text-2xl font-bold text-gray-900">RoomMate Matcher</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Lodgio</h1>
             </div>
             
             <div className="flex items-center space-x-4">

@@ -74,7 +74,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                  RoomMate Matcher
+                  Lodgio
                 </h1>
                 <p className="text-xs text-gray-600 font-urdu">رُوم میٹ میچر</p>
               </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               About 
               <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                {" "}RoomMate Matcher
+                {" "}Lodgio
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-4">

@@ -19,7 +19,7 @@ export default function ContactPage() {
       icon: <Mail className="h-8 w-8 text-blue-600" />,
       title: "Email Support", 
       description: "Detailed assistance via email",
-      contact: "support@roommate-matcher.pk",
+      contact: "ahmed.usman7615@gmail.com",
       availability: "24/7 (Response within 24 hours)",
       action: "Send Email"
     },
@@ -27,7 +27,7 @@ export default function ContactPage() {
       icon: <Phone className="h-8 w-8 text-purple-600" />,
       title: "Phone Support",
       description: "Direct phone assistance",
-      contact: "+92-21-1234-5678",
+      contact: "+923193608483",
       availability: "10 AM - 6 PM (Mon-Fri)",
       action: "Call Now"
     }
@@ -63,7 +63,7 @@ export default function ContactPage() {
             </Link>
             <div className="flex items-center space-x-2">
               <Users className="h-6 w-6 text-primary-600" />
-              <span className="font-bold text-primary-600">RoomMate Matcher</span>
+              <span className="font-bold text-primary-600">Lodgio</span>
             </div>
           </div>
         </div>
@@ -242,7 +242,7 @@ export default function ContactPage() {
                 <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-2 rounded-lg">
                   <Users className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">RoomMate Matcher</span>
+                <span className="text-lg font-bold">Lodgio</span>
               </div>
               <p className="text-gray-400 mb-3">
                 AI-powered roommate matching for Pakistani students
@@ -257,7 +257,7 @@ export default function ContactPage() {
                 <li><Link href="/seeker" className="hover:text-white transition-colors">Find Roommate</Link></li>
                 <li><Link href="/provider" className="hover:text-white transition-colors">List Property</Link></li>
                 <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
-                <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories & Pricing</Link></li>
+                <li><Link href="/success-stories" className="hover:text-white transition-colors">Features & Pricing</Link></li>
               </ul>
             </div>
             <div>
@@ -282,7 +282,7 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 RoomMate Matcher. Built with Google ADK Multi-Agent System.</p>
+            <p>&copy; 2025 Lodgio. Built with Google ADK Multi-Agent System.</p>
             <p className="text-xs mt-2">Empowering Pakistani students with AI-driven accommodation solutions</p>
           </div>
         </div>

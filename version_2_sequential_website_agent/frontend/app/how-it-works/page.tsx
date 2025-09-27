@@ -134,7 +134,7 @@ export default function HowItWorksPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                  RoomMate Matcher
+                  Lodgio
                 </h1>
               </div>
             </div>
@@ -350,7 +350,7 @@ export default function HowItWorksPage() {
                 <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-2 rounded-lg">
                   <Users className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">RoomMate Matcher</span>
+                <span className="text-lg font-bold">Lodgio</span>
               </div>
               <p className="text-gray-400 mb-3">
                 AI-powered roommate matching for Pakistani students
@@ -365,7 +365,7 @@ export default function HowItWorksPage() {
                 <li><Link href="/seeker" className="hover:text-white transition-colors">Find Roommate</Link></li>
                 <li><Link href="/provider" className="hover:text-white transition-colors">List Property</Link></li>
                 <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
-                <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories & Pricing</Link></li>
+                <li><Link href="/success-stories" className="hover:text-white transition-colors">Features & Pricing</Link></li>
               </ul>
             </div>
             <div>
@@ -390,7 +390,7 @@ export default function HowItWorksPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 RoomMate Matcher. Built with Google ADK Multi-Agent System.</p>
+            <p>&copy; 2025 Lodgio. Built with Google ADK Multi-Agent System.</p>
             <p className="text-xs mt-2">Empowering Pakistani students with AI-driven accommodation solutions</p>
           </div>
         </div>

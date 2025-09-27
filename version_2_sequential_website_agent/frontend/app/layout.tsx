@@ -8,7 +8,7 @@ import { AuthProvider } from '../components/EmailAuth'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'RoomMate Matcher - Find Your Perfect Pakistani Roommate',
+  title: 'Lodgio - Find Your Perfect Pakistani Roommate',
   description: 'AI-powered roommate matching for Pakistani students. Find compatible roommates or list your accommodation with advanced matching algorithms.',
 }
 

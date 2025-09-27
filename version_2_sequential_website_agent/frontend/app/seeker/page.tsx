@@ -602,7 +602,7 @@ export default function SeekerPage() {
                       <div className="mt-4 flex justify-end">
                         <button 
                           onClick={() => {
-                            const message = `Hi! I'm interested in connecting with ${match.profile_id} through RoomMate Matcher. Here are the details:%0A%0AProfile: ${match.profile_id}%0ALocation: ${match.location || 'N/A'}%0ACompatibility: ${match.compatibility_score}%0A%0APlease help me connect!`;
+                            const message = `Hi! I'm interested in connecting with ${match.profile_id} through Lodgio. Here are the details:%0A%0AProfile: ${match.profile_id}%0ALocation: ${match.location || 'N/A'}%0ACompatibility: ${match.compatibility_score}%0A%0APlease help me connect!`;
                             window.open(`https://wa.me/923193608483?text=${message}`, '_blank');
                           }}
                           className="bg-primary-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors flex items-center gap-2"
@@ -702,7 +702,7 @@ export default function SeekerPage() {
                 <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-2 rounded-lg">
                   <Users className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">RoomMate Matcher</span>
+                <span className="text-lg font-bold">Lodgio</span>
               </div>
               <p className="text-gray-400 mb-3">
                 AI-powered roommate matching for Pakistani students
@@ -717,7 +717,7 @@ export default function SeekerPage() {
                 <li><Link href="/seeker" className="hover:text-white transition-colors">Find Roommate</Link></li>
                 <li><Link href="/provider" className="hover:text-white transition-colors">List Property</Link></li>
                 <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
-                <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories & Pricing</Link></li>
+                <li><Link href="/success-stories" className="hover:text-white transition-colors">Features & Pricing</Link></li>
               </ul>
             </div>
             <div>
@@ -742,7 +742,7 @@ export default function SeekerPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 RoomMate Matcher. Built with Google ADK Multi-Agent System.</p>
+            <p>&copy; 2025 Lodgio. Built with Google ADK Multi-Agent System.</p>
             <p className="text-xs mt-2">Empowering Pakistani students with AI-driven accommodation solutions</p>
           </div>
         </div>

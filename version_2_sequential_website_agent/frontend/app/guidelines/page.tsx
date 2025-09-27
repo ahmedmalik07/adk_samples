@@ -95,7 +95,7 @@ export default function GuidelinesPage() {
             </Link>
             <div className="flex items-center space-x-2">
               <Users className="h-6 w-6 text-primary-600" />
-              <span className="font-bold text-primary-600">RoomMate Matcher</span>
+              <span className="font-bold text-primary-600">Lodgio</span>
             </div>
           </div>
         </div>
@@ -215,6 +215,61 @@ export default function GuidelinesPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-2 rounded-lg">
+                  <Users className="h-5 w-5 text-white" />
+                </div>
+                <span className="text-lg font-bold">Lodgio</span>
+              </div>
+              <p className="text-gray-400 mb-3">
+                AI-powered roommate matching for Pakistani students
+              </p>
+              <p className="text-primary-400 font-medium text-sm italic">
+                "Connecting Hearts, Creating Homes"
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">For Students</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/seeker" className="hover:text-white transition-colors">Find Roommate</Link></li>
+                <li><Link href="/provider" className="hover:text-white transition-colors">List Property</Link></li>
+                <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
+                                <li><Link href="/success-stories" className="hover:text-white transition-colors">Features & Pricing</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Support & Info</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link href="/help-center" className="hover:text-white transition-colors">Help Center</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/guidelines" className="hover:text-white transition-colors">Guidelines</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Our Team</h3>
+              <ul className="space-y-1 text-gray-400 text-sm">
+                <li>Ahmed Malik (Lead) - Air University</li>
+                <li>Salma Saleem - GIKI</li>
+                <li>Fatima - FAST University</li>
+                <li>Moawiz - FAST University</li>
+                <li>Rabia - Bahria University</li>
+              </ul>
+              <p className="text-xs text-gray-500 mt-3">Built with AI & passion in Pakistan 🇵🇰</p>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Lodgio. Built with Google ADK Multi-Agent System.</p>
+            <p className="text-xs mt-2">Empowering Pakistani students with AI-driven accommodation solutions</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

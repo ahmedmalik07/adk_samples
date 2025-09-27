@@ -93,7 +93,7 @@ export default function PrivacyPolicyPage() {
           >
             <h1 className="text-4xl font-bold mb-6">Your Privacy Matters</h1>
             <p className="text-xl text-primary-100 mb-4">
-              At RoomMate Matcher, we're committed to protecting your privacy while helping you find the perfect roommate.
+              At Lodgio, we're committed to protecting your privacy while helping you find the perfect roommate.
             </p>
             <p className="text-lg text-primary-200">
               Last updated: January 2025 • Effective for all users in Pakistan
@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Commitment to You</h2>
             <p className="text-gray-600 mb-4">
-              RoomMate Matcher is built by Pakistani students, for Pakistani students. We understand the unique challenges of finding accommodation in Pakistan and are committed to creating a safe, transparent platform.
+              Lodgio is built by Pakistani students, for Pakistani students. We understand the unique challenges of finding accommodation in Pakistan and are committed to creating a safe, transparent platform.
             </p>
             <p className="text-gray-600">
               This privacy policy explains how we collect, use, and protect your information when you use our AI-powered roommate matching service. We believe in being completely transparent about our data practices.
@@ -215,7 +215,7 @@ export default function PrivacyPolicyPage() {
               We operate under Pakistani jurisdiction and follow all applicable laws.
             </p>
             <p className="text-gray-600 text-sm">
-              By using RoomMate Matcher, you acknowledge that you have read and understood this privacy policy and agree to our data practices as described.
+              By using Lodgio, you acknowledge that you have read and understood this privacy policy and agree to our data practices as described.
             </p>
           </motion.div>
         </div>
@@ -230,7 +230,7 @@ export default function PrivacyPolicyPage() {
                 <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-2 rounded-lg">
                   <Users className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">RoomMate Matcher</span>
+                <span className="text-lg font-bold">Lodgio</span>
               </div>
               <p className="text-gray-400 mb-3">
                 AI-powered roommate matching for Pakistani students
@@ -245,7 +245,7 @@ export default function PrivacyPolicyPage() {
                 <li><Link href="/seeker" className="hover:text-white transition-colors">Find Roommate</Link></li>
                 <li><Link href="/provider" className="hover:text-white transition-colors">List Property</Link></li>
                 <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
-                <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories & Pricing</Link></li>
+                <li><Link href="/success-stories" className="hover:text-white transition-colors">Features & Pricing</Link></li>
               </ul>
             </div>
             <div>
@@ -270,7 +270,7 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 RoomMate Matcher. Built with Google ADK Multi-Agent System.</p>
+            <p>&copy; 2025 Lodgio. Built with Google ADK Multi-Agent System.</p>
             <p className="text-xs mt-2">Empowering Pakistani students with AI-driven accommodation solutions</p>
           </div>
         </div>

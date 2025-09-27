@@ -120,7 +120,7 @@ export default function AuthCallback() {
           <>
             <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Welcome to RoomMate Matcher!
+              Welcome to Lodgio!
             </h2>
             <p className="text-gray-600 mb-4">{message}</p>
             

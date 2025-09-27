@@ -72,7 +72,7 @@ export default function PricingPage() {
             </Link>
             <div className="flex items-center space-x-2">
               <Users className="h-6 w-6 text-primary-600" />
-              <span className="font-bold text-primary-600">RoomMate Matcher</span>
+              <span className="font-bold text-primary-600">Lodgio</span>
             </div>
           </div>
         </div>

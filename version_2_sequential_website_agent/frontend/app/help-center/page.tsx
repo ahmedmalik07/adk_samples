@@ -48,7 +48,7 @@ const categories = [
   {
     id: 'getting-started',
     title: 'Getting Started',
-    description: 'Learn the basics of using RoomMate Matcher',
+    description: 'Learn the basics of using Lodgio',
     icon: <BookOpen className="h-8 w-8 text-blue-600" />,
     count: 8,
     articles: [
@@ -137,7 +137,7 @@ const faqData = [
     category: 'Getting Started'
   },
   {
-    question: 'Is RoomMate Matcher free to use?',
+    question: 'Is Lodgio free to use?',
     answer: 'Yes! We offer a free tier that allows you to create a profile, browse potential roommates, and make basic connections. Premium features like advanced filtering and priority matching are available with our paid plans.',
     category: 'Billing'
   },
@@ -173,9 +173,96 @@ const faqData = [
   }
 ]
 
+const articleContent = {
+  'How to create your profile': {
+    content: `Creating a compelling profile is your first step to finding the perfect roommate on Lodgio. Here's how to get started:
+
+**Step 1: Basic Information**
+- Upload a clear, friendly photo that shows your face
+- Write your name and university/college
+- Add your city and preferred area
+
+**Step 2: Lifestyle Preferences**
+- Set your sleep schedule (early bird vs night owl)
+- Specify cleanliness standards
+- Choose noise tolerance levels
+- Indicate study habits and social preferences
+
+**Step 3: About Me Section**
+- Write 2-3 sentences about yourself
+- Mention your hobbies and interests
+- Include what you're looking for in a roommate
+- Be honest and authentic
+
+**Tips for Success:**
+- Use recent photos
+- Be specific about your preferences
+- Update your profile regularly
+- Add personality to make it engaging`,
+    category: 'getting-started'
+  },
+  'Meeting roommates safely': {
+    content: `Safety is our top priority at Lodgio. Follow these guidelines when meeting potential roommates:
+
+**Before Meeting:**
+- Verify their profile information
+- Chat extensively through our platform first
+- Check their university/college credentials
+- Ask for references if needed
+
+**During the Meeting:**
+- Always meet in public places (cafes, malls, university campus)
+- Bring a friend if possible
+- Meet during daytime hours
+- Trust your instincts - if something feels off, leave
+
+**Red Flags to Watch:**
+- Reluctance to meet in public
+- Pressure to decide immediately
+- Asking for money upfront
+- Inconsistent information
+- No proper identification
+
+**After Meeting:**
+- Take time to decide
+- Verify rental agreements through proper channels
+- Keep all communication documented
+- Report any suspicious behavior to our team`,
+    category: 'safety'
+  },
+  'Understanding compatibility scores': {
+    content: `Lodgio uses AI to calculate compatibility scores between roommates. Here's how it works:
+
+**Factors We Consider:**
+- Sleep schedules and daily routines
+- Cleanliness and organization preferences
+- Study habits and academic focus
+- Social preferences and lifestyle
+- Cultural and religious considerations
+- Budget and financial compatibility
+
+**Score Ranges:**
+- 90-100%: Excellent match - highly compatible
+- 80-89%: Very good match - strong compatibility
+- 70-79%: Good match - compatible with minor differences
+- 60-69%: Fair match - some compatibility issues
+- Below 60%: Poor match - significant differences
+
+**Improving Your Score:**
+- Complete your profile thoroughly
+- Be honest about your preferences
+- Update information regularly
+- Provide detailed lifestyle information
+
+**Remember:** High compatibility scores indicate better long-term roommate relationships!`,
+    category: 'getting-started'
+  }
+}
+
 export default function HelpCenter() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedArticle, setSelectedArticle] = useState<{content: string, category: string} | null>(null)
 
   const filteredArticles = useMemo(() => {
     if (selectedCategory === 'all') return categories
@@ -190,6 +277,18 @@ export default function HelpCenter() {
       faq.category.toLowerCase().includes(searchTerm.toLowerCase())
     )
   }, [searchTerm])
+
+  const handleArticleClick = (articleTitle: string) => {
+    if (articleContent[articleTitle as keyof typeof articleContent]) {
+      setSelectedArticle(articleContent[articleTitle as keyof typeof articleContent])
+    } else {
+      // For articles without content, show a placeholder
+      setSelectedArticle({
+        content: `This article "${articleTitle}" is coming soon! We're working on creating comprehensive guides for all our features. In the meantime, you can:\n\n- Contact our support team for immediate help\n- Check our FAQ section below\n- Join our community for tips from other users\n\nWe appreciate your patience as we build the best roommate matching experience for Pakistani students!`,
+        category: 'general'
+      })
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50">
@@ -325,7 +424,10 @@ export default function HelpCenter() {
                   {category.articles.slice(0, 4).map((article, idx) => (
                     <div key={idx} className="flex items-center justify-between">
                       <div>
-                        <h4 className="text-sm font-medium text-gray-900 hover:text-primary-600 cursor-pointer">
+                        <h4 
+                          className="text-sm font-medium text-gray-900 hover:text-primary-600 cursor-pointer transition-colors"
+                          onClick={() => handleArticleClick(article.title)}
+                        >
                           {article.title}
                         </h4>
                         <div className="flex items-center text-xs text-gray-500 mt-1">
@@ -352,6 +454,49 @@ export default function HelpCenter() {
           </div>
         </div>
       </section>
+
+      {/* Article Modal */}
+      {selectedArticle && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-xl shadow-2xl max-w-4xl max-h-[80vh] overflow-y-auto"
+          >
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">Help Article</h2>
+                <button
+                  onClick={() => setSelectedArticle(null)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="prose prose-lg max-w-none">
+                <div className="whitespace-pre-line text-gray-700 leading-relaxed">
+                  {selectedArticle.content}
+                </div>
+              </div>
+              <div className="mt-8 flex justify-end space-x-4">
+                <button
+                  onClick={() => setSelectedArticle(null)}
+                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                >
+                  Close
+                </button>
+                <Link
+                  href="/contact"
+                  className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                >
+                  Need More Help?
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* FAQ Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -451,7 +596,7 @@ export default function HelpCenter() {
                 <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-2 rounded-lg">
                   <Users className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-lg font-bold">RoomMate Matcher</span>
+                <span className="text-lg font-bold">Lodgio</span>
               </div>
               <p className="text-gray-400 mb-3">
                 AI-powered roommate matching for Pakistani students
@@ -466,7 +611,7 @@ export default function HelpCenter() {
                 <li><Link href="/seeker" className="hover:text-white transition-colors">Find Roommate</Link></li>
                 <li><Link href="/provider" className="hover:text-white transition-colors">List Property</Link></li>
                 <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
-                <li><Link href="/success-stories" className="hover:text-white transition-colors">Success Stories & Pricing</Link></li>
+                <li><Link href="/success-stories" className="hover:text-white transition-colors">Features & Pricing</Link></li>
               </ul>
             </div>
             <div>
@@ -491,7 +636,7 @@ export default function HelpCenter() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 RoomMate Matcher. Built with Google ADK Multi-Agent System.</p>
+            <p>&copy; 2025 Lodgio. Built with Google ADK Multi-Agent System.</p>
             <p className="text-xs mt-2">Empowering Pakistani students with AI-driven accommodation solutions</p>
           </div>
         </div>
