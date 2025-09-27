@@ -3,8 +3,8 @@
 import asyncio
 import json
 from typing import Any
-from rich import print as rprint    # Enhanced print function to support colors and formatting
-from rich.syntax import Syntax      # Used to highlight JSON output in the terminal
+from rich import print as rprint  # Enhanced print function to support colors and formatting
+from rich.syntax import Syntax  # Used to highlight JSON output in the terminal
 
 # These are specific classes from Google's AI library for structuring messages.
 from google.genai.types import Content, Part
@@ -13,8 +13,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- B. IMPORTING OUR AGENT ---
-# We are importing the "brain" of our AI agent from our project.
-from agents.root_website_builder.agent import root_agent
+# We are importing the HIGH-PERFORMANCE PARALLEL roommate matching system from our project.
+from agents.roommate_matcher_parallel.agent import root_agent
 
 # --- C. IMPORTING ADK (AGENT DEVELOPMENT KIT) COMPONENTS ---
 # These are special tools from the ADK to run our agent programmatically.
@@ -23,9 +23,10 @@ from google.adk.sessions import InMemorySessionService
 
 # --- 1. SETTING UP IDENTIFIERS (CONSTANTS) ---
 # We define constant text variables to identify our application and conversation.
-APP_NAME = "website_builder_app"
+APP_NAME = "roommate_matcher_app"
 USER_ID = "user_12345"
-SESSION_ID = "session_chat_loop_1" # A unique ID for this entire chat session.
+SESSION_ID = "session_chat_loop_1"  # A unique ID for this entire chat session.
+
 
 # --- 2. THE MAIN CHAT LOOP FUNCTION ---
 # This async function will set everything up once, then loop to allow for continuous chat.
@@ -84,21 +85,20 @@ async def chat_loop():
         final_response = ""
         i = 0
         async for event in events:
-            i+= 1  # Increment the event counter
+            i += 1  # Increment the event counter
             # Print each event as it comes in, with a title for clarity.
             # This helps us see the agent's thought process step-by-step.
             print_json_response(event, f"============Event #{i}=============")
 
-            if hasattr(event, "author") and event.author == "code_writer_agent":
+            if hasattr(event, "author") and event.author == "room_hunter_agent":
 
                 if event.is_final_response():
                     # If the event is a final response, we extract the text.
                     # This is the agent's final answer to the user's query.
                     final_response = event.content.parts[0].text
                     # Print a clean separation for the agent's response.
-                    print(f"\nAgent Response:\n------------------------\n{final_response}\n")
-                    break # Stop processing events once we have the final answer.
-
+                    print(f"\nRoommate Matching System Response:\n------------------------\n{final_response}\n")
+                    break  # Stop processing events once we have the final answer.
 
 
 # -----------------------------------------------------------------------------

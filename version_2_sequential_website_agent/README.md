@@ -1,17 +1,30 @@
-# Sequential Website Builder Agent (v2)
+# Roomma## 🏠 Features
 
-This project demonstrates a multi-agent system using the Agent Development Kit (ADK). It uses a team of specialized, sequentially-invoked agents to build complete HTML+CSS+JS web pages from a single natural language prompt. This approach mimics a real-world development workflow: gathering requirements, creating a design, and then writing the code.
+- ✅ **Sequential Multi-Agent Workflow:** A root agent orchestrates specialized agents:
+  1. `profile_reader`: Parses messy Urdu/English roommate ads into structured data
+  2. `match_scorer`: Calculates compatibility scores based on lifestyle factors
+  3. `red_flag`: Detects serious lifestyle conflicts and safety concerns
+  4. `wingman`: Provides transparent match explanations and compromise suggestions
+  5. `room_hunter`: Finds suitable housing from 400+ available listings
+- ✅ **Cultural Intelligence:** Handles mixed Urdu/English text and Pakistani student culture
+- ✅ **Smart Matching:** Considers sleep schedule, cleanliness, study habits, noise tolerance, budget
+- ✅ **Transparency:** Clear explanations for why matches work (or don't work)
+- ✅ **Safety Focus:** Red flag detection for lifestyle conflicts and unsafe situations
+- ✅ **Real Data:** 400 synthetic roommate profiles + 400 housing listings
+- ✅ **Compromise Suggestions:** Practical advice for resolving compatibility issues System for Pakistani Students
 
-The generated web page is saved to a timestamped `.html` file in the `output/` directory.
+This project demonstrates a multi-agent AI system using the Agent Development Kit (ADK) that helps Pakistani students find compatible roommates and suitable housing. The system processes messy, mixed Urdu/English roommate advertisements and uses sophisticated compatibility algorithms to make intelligent matches while considering cultural and social factors.
+
+The system addresses the real problem of finding compatible roommates through unreliable Facebook groups and WhatsApp forwards by providing transparent, AI-powered matching with clear explanations.
 
 ---
 
 ## 📦 Features
 
 - ✅ **Sequential Multi-Agent Workflow:** A root agent orchestrates a team of specialists:
-    1.  `requirements_writer`: Clarifies the user's request.
-    2.  `designer`: Plans the visual layout and structure.
-    3.  `code_writer`: Generates the final HTML/CSS/JS code.
+  1.  `requirements_writer`: Clarifies the user's request.
+  2.  `designer`: Plans the visual layout and structure.
+  3.  `code_writer`: Generates the final HTML/CSS/JS code.
 - ✅ Gemini-powered LLM agents using Google ADK.
 - ✅ Takes a high-level natural language query (e.g., “build me a portfolio site”).
 - ✅ Generates clean, complete HTML pages with inline CSS/JS.
@@ -23,120 +36,237 @@ The generated web page is saved to a timestamped `.html` file in the `output/` d
 ## 📂 Project Structure
 
 ```text
-version_2_sequential_website_agent/
+roommate_matching_system/
 ├── agents/
-│   ├── root_website_builder/      # Orchestrator: Manages the agent sequence.
+│   ├── roommate_matcher_root/     # Orchestrator: Manages the agent sequence
+│   │   ├── agent.py               # Main roommate matching coordinator
+│   │   ├── instructions.txt
+│   │   └── description.txt
+│   ├── profile_reader/            # Agent 1: Parses messy roommate ads
 │   │   ├── agent.py
 │   │   ├── instructions.txt
 │   │   └── description.txt
-│   ├── requirements_writer/       # Agent 1: Gathers and defines requirements.
+│   ├── match_scorer/              # Agent 2: Calculates compatibility scores
 │   │   ├── agent.py
 │   │   ├── instructions.txt
 │   │   └── description.txt
-│   ├── designer/                  # Agent 2: Creates a design plan from requirements.
+│   ├── red_flag/                  # Agent 3: Detects lifestyle conflicts
 │   │   ├── agent.py
 │   │   ├── instructions.txt
 │   │   └── description.txt
-│   └── code_writer/               # Agent 3: Writes HTML/CSS/JS from the design plan.
+│   ├── wingman/                   # Agent 4: Explains matches & suggests compromises
+│   │   ├── agent.py
+│   │   ├── instructions.txt
+│   │   └── description.txt
+│   └── room_hunter/               # Agent 5: Finds suitable housing options
 │       ├── agent.py
 │       ├── instructions.txt
 │       └── description.txt
-├── tools/
-│   └── file_writer_tool.py        # Tool used by the root agent to save the final code.
+├── datasets/
+│   ├── synthetic_roommate_profiles_pakistan_400.json  # Sample student profiles
+│   └── housing_listings_pakistan_400.json            # Available housing data
 ├── utils/
-│   └── file_loader.py             # Utility for reading prompt files.
-├── output/                        # Auto-generated folder with the final HTML output.
-│   └── 250618_143021_generated_page.html # Example output file
-├── main.py                        # Entry point for the ADK application.
-└── pyproject.toml                 # Project dependencies.
+│   ├── file_loader.py             # Utility for reading instruction files
+│   └── data_loader.py             # Dataset loading and filtering utilities
+├── demo.py                        # Interactive demo showcasing system capabilities
+├── agent_runner.py                # Main chat interface for the system
+└── pyproject.toml                 # Project dependencies
 ```
 
 ---
 
 ## 🚀 Quickstart
 
-### 1. Clone the Repo
+### 1. Prerequisites
 
-```bash
-git clone https://github.com/theailanguage/adk_samples.git
-```
+**Required:** Python 3.11+, uv, and Google AI API key.
 
-### 2. Set Up Python Environment
-**Required:** Python 3.11+, uv, VS Code, and Git.
+### 2. Set Up Environment
 
 ```bash
 cd adk_samples/version_2_sequential_website_agent
-uv venv
-source .venv/bin/activate  # or .venv\Scripts\activate.bat on Windows
-uv sync --all-groups
+uv sync  # Install dependencies
 ```
 
 ### 3. Add Your API Key
 
-Create a `.env` file in the `version_2_sequential_website_agent` project root:
+Create a `.env` file in the project root:
 
 ```env
 GOOGLE_API_KEY=your-google-api-key
 GOOGLE_GENAI_USE_VERTEXAI=FALSE
 ```
 
-You can get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey).
+Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey).
 
----
-
-### 4. Run the Agent UI
+### 4. Run the Demo
 
 ```bash
-cd adk_samples/version_2_sequential_website_agent
-adk web ./agents
+uv run python demo.py  # See system overview and sample data
 ```
 
-Then open `http://localhost:8000` in your browser. From the agent dropdown list, select **`root_website_builder`**. This is the main entry point that will run the entire sequence.
+### 5. Choose Your Interface
+
+**🌐 Web Interface (Recommended):**
+
+```bash
+uv run adk web ./agents
+# Then go to: http://localhost:8000
+# Select: "roommate_matching_agent" from dropdown
+```
+
+**💬 Interactive Chat:**
+
+```bash
+uv run python agent_runner.py
+```
+
+**🚀 Quick Launcher:**
+
+```bash
+uv run python launcher.py  # Shows all options
+```
 
 ---
 
-### **Four Ways to Run Your ADK Agent**
+## 🎯 Example Queries
 
-| S.No. | Method & Command | Description | When to Use |
-|------:|------------------|-------------|-------------|
-| 1 | **ADK Web**  <br>`adk web ./agents` | - Launches a browser-based UI | - Ideal for debugging or quick demos |
-| 2 | **ADK API Server** <br>`adk api_server ./agents` | - Starts an HTTP API server | - Useful for REST API-based automation. |
-| 3 | **Programmatic Python Script** <br>`uv run python3 -m agent_runner` | - Fully code-driven interaction using Python and the ADK SDK | - Ideal for building your own CLI tools or backend pipelines |
-| 4 | **ADK CLI Run** <br>`adk run agents/root_website_builder` | - Command-line way to run a specific agent directly | - Great for quick runs or testing |
-
----
-
-## 💬 Example Prompt
-
-Provide a high-level goal to the `root_website_builder` agent:
+Try these sample queries with the system:
 
 ```
-Create a simple landing page for a new coffee shop called "The Grind". It should have a warm, inviting feel with a brown and cream color palette. Include a large heading, a short paragraph about our fresh beans, and a "Contact Us" button.
-```
+Find me a roommate in Karachi with budget around 15k who is tidy and quiet
 
-The agent system will process this and generate a complete `.html` file in the `output/` folder.
+Match profile R-001 with compatible roommates and suggest housing options
+
+I need a quiet roommate in Islamabad for online classes, budget max 20k
+
+Compare profiles R-003 and R-010 for compatibility and red flags
+
+Find housing in Lahore for two students with 25k combined budget
+```
 
 ---
 
 ## 🧠 How It Works
 
-This project demonstrates a sequential "chain-of-thought" process using multiple agents, orchestrated by a root agent.
+The system uses a sequential multi-agent approach to solve roommate matching:
 
-1.  You submit your prompt to the **`root_website_builder`** agent.
-2.  The `root_website_builder` first invokes the **`requirements_writer`** agent, passing it your prompt. This agent refines the request into a structured list of technical and design requirements.
-3.  The `root_website_builder` then takes the output from the `requirements_writer` and passes it to the **`designer`** agent. This agent creates a high-level plan for the page's structure, layout, and style.
-4.  Next, the `root_website_builder` passes the design plan to the **`code_writer`** agent. This specialist agent generates the final, clean HTML, CSS, and JavaScript code.
-5.  Finally, the `root_website_builder` receives the generated code and uses the `write_to_file` tool to save it as a timestamped `.html` file in the `output/` directory.
+### Agent Flow:
+
+1. **Profile Reader Agent**
+
+   - Parses messy, mixed Urdu/English roommate ads
+   - Extracts structured attributes (budget, cleanliness, sleep schedule, etc.)
+   - Handles cultural context and Roman Urdu phrases
+
+2. **Match Scorer Agent**
+
+   - Calculates compatibility scores (0-100) between profiles
+   - Weighs factors: sleep (25%), cleanliness (25%), noise (20%), study habits (15%), budget (15%)
+   - Provides detailed score breakdown
+
+3. **Red Flag Agent**
+
+   - Detects serious lifestyle conflicts
+   - Identifies safety concerns and cultural mismatches
+   - Flags unrealistic expectations or suspicious profiles
+
+4. **Wingman Agent**
+
+   - Creates human-readable match explanations
+   - Suggests practical compromises for compatibility issues
+   - Provides conversation starters and success probability
+
+5. **Room Hunter Agent**
+   - Searches 400+ housing listings by location and budget
+   - Matches amenities to student preferences
+   - Considers cultural requirements (separate washrooms, etc.)
+
+### Smart Features:
+
+- **Cultural Intelligence:** Understands "tidy banda", "gandey bartan nahi", "tabla practice"
+- **Budget Flexibility:** Handles "budget no issue" vs specific amounts
+- **Safety First:** Red flags for "hosts frequent parties" vs "needs quiet"
+- **Practical Solutions:** Suggests quiet hours, cleaning schedules, study arrangements
 
 ---
 
-## 🛠️ Extending the Project
+## 📊 Dataset Overview
 
-The modular, sequential design makes this project easy to extend:
+### Roommate Profiles (400 entries)
 
--   **Add a QA Agent:** Insert a `qa_testing_agent` into the sequence after the `code_writer` to validate the generated HTML.
--   **Swap a Specialist:** Replace the `code_writer` with a `react_component_writer` to generate React code instead of plain HTML.
--   **Add New Tools:** Provide agents with new tools, like an image generation tool for the `designer` to create custom assets.
+```json
+{
+  "id": "R-001",
+  "raw_profile_text": "Hostel seat available G-11, Islamabad. Budget no issue. Want Tidy banda, prefer Online classes, Quiet ok.",
+  "city": "Islamabad",
+  "area": "G-11",
+  "budget_PKR": 13000,
+  "sleep_schedule": "Night owl",
+  "cleanliness": "Tidy",
+  "noise_tolerance": "Quiet",
+  "study_habits": "Online classes",
+  "food_pref": "Flexible"
+}
+```
+
+### Housing Listings (400 entries)
+
+```json
+{
+  "listing_id": "H-0001",
+  "city": "Multan",
+  "area": "Gulgasht Colony",
+  "monthly_rent_PKR": 14932,
+  "rooms_available": 1,
+  "amenities": ["WiFi", "Security guard", "Parking", "Mess facility"],
+  "availability": "Available"
+}
+```
+
+---
+
+## 🎮 Running Methods
+
+| Method               | Command                                       | Use Case                       |
+| -------------------- | --------------------------------------------- | ------------------------------ |
+| **Interactive Chat** | `uv run python agent_runner.py`               | Full conversation experience   |
+| **Web UI**           | `uv run adk web ./agents`                     | Visual debugging interface     |
+| **API Server**       | `uv run adk api_server ./agents`              | REST API integration           |
+| **CLI Direct**       | `uv run adk run agents/roommate_matcher_root` | Single query testing           |
+| **Quick Launcher**   | `uv run python launcher.py`                   | Choose interface interactively |
+
+---
+
+## 🔧 Technical Features
+
+- **Multi-language Processing:** Handles English, Urdu, Roman Urdu seamlessly
+- **Cultural Context:** Considers prayer times, family visits, Pakistani social norms
+- **Scalable Architecture:** Easy to add new agents or modify scoring algorithms
+- **Rich Output:** Detailed explanations with emojis and formatting
+- **Safety Focused:** Comprehensive red flag detection for student safety
+
+---
+
+## 📈 Future Enhancements
+
+- **Machine Learning Integration:** Train on real roommate success/failure data
+- **Video Call Scheduling:** Integrate with calendar systems for virtual meetings
+- **University Integration:** Connect with specific campus housing databases
+- **Mobile App:** React Native interface for on-the-go matching
+- **Feedback Loop:** Learn from successful/unsuccessful roommate pairs
+- **Language Expansion:** Add support for more regional languages
+
+---
+
+## 🛠️ Extending the System
+
+The modular design makes this project easy to extend:
+
+- **Add Personality Matching:** Insert a `personality_analyzer` agent to assess compatibility beyond lifestyle factors
+- **Video Chat Integration:** Add a `meeting_scheduler` agent to arrange virtual introductions
+- **University Integration:** Connect with campus housing databases for official listings
+- **Feedback System:** Add a `review_collector` agent to learn from successful/failed matches
 
 ---
 
@@ -146,4 +276,4 @@ This repository is licensed under the **GNU General Public License v3.0**. See t
 
 ---
 
-Happy building with ADK! 🛠
+Happy roommate matching with ADK! 🏠🤝
