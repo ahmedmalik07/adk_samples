@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { API_BASE_URL } from '@/lib/api'
 import { motion } from 'framer-motion'
 import { CheckCircle, XCircle, Loader2 } from 'lucide-react'
 
@@ -57,7 +58,7 @@ export default function AuthCallback() {
       
   console.log('Sending to backend:', { ...requestBody, access_token: !!access_token, refresh_token: !!refresh_token, code: !!code })
       
-      const response = await fetch('http://localhost:8000/auth/callback', {
+      const response = await fetch(`${API_BASE_URL}/auth/callback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

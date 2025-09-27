@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { User, Home, Users, Settings, LogOut, Plus } from 'lucide-react'
 import Link from 'next/link'
+import { API_BASE_URL } from '@/lib/api'
 
 export default function Dashboard() {
   const [user, setUser] = useState<any>(null)
@@ -27,7 +28,7 @@ export default function Dashboard() {
         return
       }
 
-      const response = await fetch('http://localhost:8000/auth/user', {
+      const response = await fetch(`${API_BASE_URL}/auth/user`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -62,7 +63,7 @@ export default function Dashboard() {
 
   const handleSignOut = async () => {
     try {
-      await fetch('http://localhost:8000/auth/signout', {
+      await fetch(`${API_BASE_URL}/auth/signout`, {
         method: 'POST'
       })
       localStorage.removeItem('supabase_token')

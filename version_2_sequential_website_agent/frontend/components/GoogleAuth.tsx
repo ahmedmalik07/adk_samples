@@ -3,6 +3,7 @@
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import { motion } from 'framer-motion'
 import { User, LogIn, LogOut, UserPlus } from 'lucide-react'
+import { API_BASE_URL } from '@/lib/api'
 
 // Auth Context
 interface AuthContextType {
@@ -30,7 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const token = localStorage.getItem('supabase_token')
       if (token) {
-        const response = await fetch('http://localhost:8000/auth/user', {
+        const response = await fetch(`${API_BASE_URL}/auth/user`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -53,12 +54,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const getAuthUrl = async (type: 'signin' | 'signup'): Promise<string | null> => {
     try {
       // Test connection first
-      const testResponse = await fetch('http://localhost:8000/auth/test')
+      const testResponse = await fetch(`${API_BASE_URL}/auth/test`)
       const testData = await testResponse.json()
       console.log('Auth system status:', testData)
       
       const endpoint = type === 'signin' ? '/auth/google/signin' : '/auth/google/signup'
-      const response = await fetch(`http://localhost:8000${endpoint}`, {
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -109,7 +110,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = async () => {
     try {
-      await fetch('http://localhost:8000/auth/signout', {
+      await fetch(`${API_BASE_URL}/auth/signout`, {
         method: 'POST'
       })
       
